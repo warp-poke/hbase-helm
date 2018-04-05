@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "hbase.fullname" . }}-hdfs-nn
+  name: {{ template "hbase.name" . }}-hdfs-nn
   labels:
     app: {{ template "hadoop.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}

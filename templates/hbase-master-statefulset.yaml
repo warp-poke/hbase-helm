@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: {{ template "hbase.fullname" . }}-hbase-master
+  name: {{ template "hbase.name" . }}-hbase-master
   annotations:
     checksum/config: {{ include (print $.Template.BasePath "/hadoop-configmap.yaml") . | sha256sum }}
   labels:
@@ -11,7 +11,7 @@ metadata:
     heritage: {{ .Release.Service }}
     component: hbase-master
 spec:
-  serviceName: {{ template "hbase.fullname" . }}-hbase-master
+  serviceName: {{ template "hbase.name" . }}-hbase-master
   replicas: 1
   template:
     metadata:

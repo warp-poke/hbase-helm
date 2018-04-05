@@ -27,7 +27,7 @@ hdfs:
   dataNode:
     replicas: 3
 
-    pdbMinAvailable: 2
+    pdbMinAvailable: 3
 
     resources:
       requests:
@@ -52,4 +52,4 @@ persistence:
 
 hbase:
   zookeeper:
-    quorum: "10.97.180.88"
+    quorum: "myzk-zookeeper"

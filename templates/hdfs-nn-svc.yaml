@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "hbase.fullname" . }}-hdfs-nn
+  name: {{ template "hbase.name" . }}-hdfs-nn
   labels:
     app: {{ template "hadoop.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -10,6 +10,7 @@ metadata:
     heritage: {{ .Release.Service }}
     component: hdfs-nn
 spec:
+  clusterIP: "None"
   ports:
   - name: dfs
     port: 9000

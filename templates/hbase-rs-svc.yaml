@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "hbase.fullname" . }}-hbase-rs
+  name: {{ template "hbase.name" . }}-hbase-rs
   labels:
     app: {{ template "hbase.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -10,6 +10,7 @@ metadata:
     heritage: {{ .Release.Service }}
     component: hbase-rs
 spec:
+  clusterIP: "None"
   ports:
   - port: 16020
     name: rs

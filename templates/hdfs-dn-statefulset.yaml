@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: {{ template "hbase.fullname" . }}-hdfs-dn
+  name: {{ template "hbase.name" . }}-hdfs-dn
   annotations:
     checksum/config: {{ include (print $.Template.BasePath "/hadoop-configmap.yaml") . | sha256sum }}
   labels:
@@ -11,7 +11,7 @@ metadata:
     heritage: {{ .Release.Service }}
     component: hdfs-dn
 spec:
-  serviceName: {{ template "hbase.fullname" . }}-hdfs-dn
+  serviceName: {{ template "hbase.name" . }}-hdfs-dn
   replicas: {{ .Values.hdfs.dataNode.replicas }}
   template:
     metadata:
@@ -76,7 +76,7 @@ spec:
       - name: dfs
       {{- if .Values.persistence.dataNode.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "hbase.fullname" . }}-hdfs-dn
+          claimName: {{ template "hbase.name" . }}-hdfs-dn
       {{- else }}        
         emptyDir: {}
       {{- end }}

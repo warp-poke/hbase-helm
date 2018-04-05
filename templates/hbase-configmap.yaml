@@ -12,11 +12,15 @@ data:
     <configuration>
       <property>
         <name>hbase.master</name>
-        <value>{{ template "hbase.fullname" . }}-hbase-master:16010</value>
+        <value>{{ template "hbase.name" . }}-hbase-master:16010</value>
+      </property>
+      <property>
+        <name>zookeeper.znode.parent</name>
+        <value>/hbase</value>
       </property>
       <property>
         <name>hbase.rootdir</name>
-        <value>hdfs://{{ template "hbase.fullname" . }}-hdfs-nn:9000/hbase</value>
+        <value>hdfs://{{ template "hbase.name" . }}-hdfs-nn:9000/hbase</value>
       </property>
       <property>
         <name>hbase.cluster.distributed</name>
